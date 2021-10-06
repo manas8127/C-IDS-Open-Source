@@ -13,28 +13,6 @@ import boto3
 
 sns.set_style('darkgrid')
 
-# ml_model_path = r'C:\Users\lenovo\Documents\Cyber-MADS\pull-three\Cyber_MADS\model_joblib'
-# ml_model = joblib.load(os.path.expanduser(ml_model_path))
-
-NEW_AWS_ACCESS_KEY_ID = "AKIAWUZ42VJKZJRRTH2M"
-NEW_AWS_SECRET_ACCESS_KEY = "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"
-
-bucket_name = 'cyber-mads-2'
-
-client = boto3.client(
-    "s3",
-    aws_access_key_id = NEW_AWS_ACCESS_KEY_ID,
-    aws_secret_access_key = NEW_AWS_SECRET_ACCESS_KEY,
-    region_name = 'ap-south-1'
-)
-
-s3 = boto3.resource(
-    's3',
-    aws_access_key_id = NEW_AWS_ACCESS_KEY_ID,
-    aws_secret_access_key = NEW_AWS_SECRET_ACCESS_KEY,
-    region_name = 'ap-south-1'
-)
-
 
 def app():
     st.title('Timeline')
@@ -75,19 +53,6 @@ def app():
     sns.countplot(x=dfy["Label"], hue = df["Time"])
     st.pyplot(fig)
 
-    filename = st.text_input('Enter the file name with extension to download')
-    download_location = 'C:/Users/lenovo/Downloads/{}'.format(filename)
-    if st.button("Download"):
-        client.download_file('cyber-mads-2', filename, download_location)
-        st.success("File must have been downloaded!")
-
-    #fig.add_trace(go.Bar(y=dfy['Label'], x=df["Time"],
-    #                         name='Bar Chart'))
-
-    
-
-
-    #st.plotly_chart(fig, use_container_width=True)
 
 
 

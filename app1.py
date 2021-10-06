@@ -7,28 +7,6 @@ import seaborn as sns
 
 sns.set_style('darkgrid')
 
-# ml_model_path = r'C:\Users\lenovo\Documents\Cyber-MADS\pull-three\Cyber_MADS\model_joblib'
-# ml_model = joblib.load(os.path.expanduser(ml_model_path))
-
-NEW_AWS_ACCESS_KEY_ID = "AKIAWUZ42VJKZJRRTH2M"
-NEW_AWS_SECRET_ACCESS_KEY = "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"
-
-bucket_name = 'cyber-mads-2'
-
-client = boto3.client(
-    "s3",
-    aws_access_key_id = NEW_AWS_ACCESS_KEY_ID,
-    aws_secret_access_key = NEW_AWS_SECRET_ACCESS_KEY,
-    region_name = 'ap-south-1'
-)
-
-s3 = boto3.resource(
-    's3',
-    aws_access_key_id = NEW_AWS_ACCESS_KEY_ID,
-    aws_secret_access_key = NEW_AWS_SECRET_ACCESS_KEY,
-    region_name = 'ap-south-1'
-)
-
 
 def ml_model():
     mj=joblib.load('model_joblib')
@@ -62,18 +40,6 @@ def ml_model():
 
 def app():
     st.title('Dashboard')
-
-    # filename = st.text_input("Name of the file with the extension")
-    # st.write("Choose whether you want to download or stream the file")
-    # download_location = 'C:/Users/lenovo/Downloads/{}'.format(filename)
-    # if st.button("Download"):
-    #     client.download_file('cyber-mads-2', filename, download_location)
-    #     st.success("File must have been downloaded!")
-    #     ml_model()
-    # if st.button("Stream"):
-    #     obj = client.get_object(Bucket=bucket_name, Key=filename)
-    #     st.write(obj['Body'])
-    #     ml_model()
     ml_model()
     
 

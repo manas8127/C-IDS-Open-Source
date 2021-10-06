@@ -13,16 +13,12 @@ def app():
     st.title('Reports')
     dfx = pd.read_csv('x_test_amex_real.csv')
     dfxi=dfx.iloc[0:1000]
-    dfy = pd.read_csv(r'y_test_amex_real.csv')
+    dfy = pd.read_csv('y_test_amex_real.csv')
     dfyi=dfy.iloc[0:1000]
     # df=pd.read_csv(r'C:\Cyber_MADS\testing.csv')
     x_axis = st.selectbox(
         "Choose a column for its relationship with the Label", dfx.columns)
-    #y_axis = st.selectbox("Choose a variable for the y-axis", dfy.columns)
-    #ax = sns.stripplot(x_axis, dfy.Label)
-    #ax.set(xlabel ='', ylabel ='Label')
-    # st.write(dfx[x_axis])
-    # st.write(dfy['Label'])
+
     chart_visual = st.selectbox(
         'Select Charts/Plot type', ('Line Chart', 'Bar Chart', 'Bubble Chart'))
 
@@ -45,15 +41,3 @@ def app():
 
 
     st.plotly_chart(fig, use_container_width=True)
-
-    '''
-    fig = px.scatter(
-        x=dfy['Label'],
-        y=dfx[x_axis],
-    )
-    fig.update_layout(
-        xaxis_title="Label",
-        yaxis_title="Work",
-    )
-    st.write(fig)
-    '''
